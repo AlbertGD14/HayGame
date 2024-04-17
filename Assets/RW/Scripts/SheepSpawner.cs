@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.PlasticSCM.Editor.WebApi;
 using UnityEngine;
 
 public class SheepSpawner : MonoBehaviour
@@ -9,11 +10,16 @@ public class SheepSpawner : MonoBehaviour
     public List<Transform> sheepSpawnPositions = new List<Transform>();
     public float timeBetweenSpawns;
     private List<GameObject> sheepList = new List<GameObject>();
+    private float increasedRunSpeed;
+    private float baseRunSpeed;
+    private float speedIncreaseRate = 0.5f;
 
     // Start is called before the first frame update
     void Start()
     {
         StartCoroutine(SpawnRoutine());
+        baseRunSpeed = sheepPrefab.GetComponent<Sheep>().runSpeed;
+        increasedRunSpeed = baseRunSpeed;
     }
 
     // Update is called once per frame
@@ -27,7 +33,14 @@ public class SheepSpawner : MonoBehaviour
         Vector3 randomPosition = sheepSpawnPositions[Random.Range(0, sheepSpawnPositions.Count)].position;
         GameObject sheep = Instantiate(sheepPrefab, randomPosition, sheepPrefab.transform.rotation);
         sheepList.Add(sheep);
-        sheep.GetComponent<Sheep>().SetSpawner(this);
+        Sheep sheepComponent = sheep.GetComponent<Sheep>();
+        baseRunSpeed = sheepComponent.runSpeed;
+
+        if (sheepComponent != null)
+        {
+            sheepComponent.SetSpawner(this);
+            sheepComponent.runSpeed = increasedRunSpeed;
+        }
     }
 
     private IEnumerator SpawnRoutine()
@@ -36,6 +49,11 @@ public class SheepSpawner : MonoBehaviour
         {
             SpawnSheep();
             yield return new WaitForSeconds(timeBetweenSpawns);
+            increasedRunSpeed += speedIncreaseRate;
+            if(timeBetweenSpawns >= 0.5f)
+            {
+                timeBetweenSpawns -= 0.05f;
+            }
         }
     }
 
