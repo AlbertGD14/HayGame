@@ -344,6 +344,11 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4375756707315031859, guid: ff9c52423c3a7be49af987edf422bcff,
+        type: 3}
+      propertyPath: rotationSpeed.y
+      value: 30
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1059,6 +1064,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Windmill
+      objectReference: {fileID: 0}
+    - target: {fileID: 4375756707315031859, guid: ff9c52423c3a7be49af987edf422bcff,
+        type: 3}
+      propertyPath: rotationSpeed.y
+      value: 30
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

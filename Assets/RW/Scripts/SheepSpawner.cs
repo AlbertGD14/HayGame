@@ -50,9 +50,9 @@ public class SheepSpawner : MonoBehaviour
             SpawnSheep();
             yield return new WaitForSeconds(timeBetweenSpawns);
             increasedRunSpeed += speedIncreaseRate;
-            if(timeBetweenSpawns >= 0.5f)
+            if(timeBetweenSpawns >= 1f)
             {
-                timeBetweenSpawns -= 0.05f;
+                timeBetweenSpawns -= 0.01f;
             }
         }
     }
