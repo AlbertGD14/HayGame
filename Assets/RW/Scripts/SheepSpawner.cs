@@ -52,7 +52,7 @@ public class SheepSpawner : MonoBehaviour
             increasedRunSpeed += speedIncreaseRate;
             if(timeBetweenSpawns >= 1f)
             {
-                timeBetweenSpawns -= 0.01f;
+                timeBetweenSpawns -= 0.02f;
             }
         }
     }
