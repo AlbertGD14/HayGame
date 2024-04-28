@@ -13,6 +13,7 @@ public class Sheep : MonoBehaviour
     private Collider myCollider;
     private Rigidbody myRigidbody;
     private SheepSpawner sheepSpawner;
+    private int sheepsDropped;
 
     // Start is called before the first frame update
     void Start()
@@ -58,14 +59,23 @@ public class Sheep : MonoBehaviour
         }
     }
 
+    private void CallDropSheep()
+    {
+        sheepsDropped++;
+        Destroy(gameObject, dropDestroyDelay);
+        if(sheepsDropped % 2 == 0)
+        {
+            GameStateManager.Instance.DroppedSheep();
+        }
+    }
+
     private void Drop()
     {
         myRigidbody.isKinematic = false;
         myCollider.isTrigger = false;
-        GameStateManager.Instance.DroppedSheep();
         sheepSpawner.RemoveSheepFromList(gameObject);
         SoundManager.Instance.PlaySheepDroppedClip();
-        Destroy(gameObject, dropDestroyDelay);
+        CallDropSheep();
     }
 
     public void SetSpawner(SheepSpawner spawner)
