@@ -1,1 +1,3 @@
-
+The addons to this project are:
+- Every time a sheep spawns, the movement velocity increases
+- Every time a sheep spawns, the time between spawns decreases unit a limit
