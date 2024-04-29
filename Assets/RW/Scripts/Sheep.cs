@@ -44,8 +44,6 @@ public class Sheep : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("OnTriggerEnter called with object: " + other.gameObject.name);
-
         if (other.CompareTag("Hay") && !hitByHay)
         {
             Destroy(other.gameObject);
@@ -53,8 +51,6 @@ public class Sheep : MonoBehaviour
         }
         else if (other.CompareTag("DropSheep"))
         {
-            Debug.Log("Collided with drop sheep object");
-
             Drop();
         }
     }
