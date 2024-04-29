@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.PlasticSCM.Editor.WebApi;
 using UnityEngine;
 
 public class SheepSpawner : MonoBehaviour
@@ -50,7 +49,7 @@ public class SheepSpawner : MonoBehaviour
             SpawnSheep();
             yield return new WaitForSeconds(timeBetweenSpawns);
             increasedRunSpeed += speedIncreaseRate;
-            if(timeBetweenSpawns >= 1f)
+            if(timeBetweenSpawns >= 0.7f)
             {
                 timeBetweenSpawns -= 0.02f;
             }
